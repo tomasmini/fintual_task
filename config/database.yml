@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+
+development:
+  <<: *default
+  database: fintual_task_development
+
+test:
+  <<: *default
+  database: fintual_task_test
+
+production:
+  <<: *default
+  database: fintual_task_production
+  username: fintual_task
+  password: <%= ENV["FINTUAL_TASK_DATABASE_PASSWORD"] %>
